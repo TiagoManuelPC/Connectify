@@ -1,3 +1,20 @@
 .page-height {
   height: 100vh;
 }
+
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-light .navbar-brand {
+  color: white;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #cccccc; /* Optional: Add a hover effect */
+}
+
+.brand-large {
+  font-size: 2rem; /* Adjust the font size as needed */
+  font-weight: bold; /* Optional: Make the text bold */
+}
