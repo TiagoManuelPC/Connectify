@@ -1,20 +1,21 @@
-<div class="background h-100 d-flex align-items-center justify-content-center">
-    <div class="card custom-card text-white p-4">
-        <h1 class="text-center">Login</h1>
-        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" email>
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1">
-            </div>
-            <button type="submit" class="btn btn-custom w-100">Login</button>
-        </form>
-        <div class="text-center mt-3">
-            <a (click)="openSignUp()" class="text-white" style="cursor: pointer;">Don't have an account? Sign up</a>
-        </div>
-    </div>
+<div class="h-100 d-flex align-items-center justify-content-center">
+	<div class="card custom-card text-white p-4">
+		<h1 class="text-center">Login</h1>
+		<form #loginForm="ngForm" (ngSubmit)="login()">
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">User Name</label>
+				<input class="form-control" name="username" [(ngModel)]="model.username" type="text"
+					placeholder="Username">
+			</div>
+			<div class="mb-3">
+				<label for="exampleInputPassword1" class="form-label">Password</label>
+				<input class="form-control" name="password" [(ngModel)]="model.password" class="form-control me-sm-2"
+					type="password" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-custom w-100">Login</button>
+		</form>
+		<div class="text-center mt-3">
+			<a (click)="openSignUp()" class="text-white" style="cursor: pointer;">Don't have an account? Sign up</a>
+		</div>
+	</div>
 </div>

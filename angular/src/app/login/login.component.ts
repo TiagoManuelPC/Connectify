@@ -1,34 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
+import { AccountService } from '../_services/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-login',
-  standalone: false,
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+    selector: 'app-login',
+    standalone: false,
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+    baseUrl = environment.apiUrl;
+    model: any = {};
+    constructor(private http: HttpClient,
+        private router: Router,
+        public accountService: AccountService,
+        private toastr: ToastrService
+    ) { }
 
-  constructor(private http: HttpClient) { }
+    ngOnInit(): void {
+    }
 
-  ngOnInit(): void {
-    this.http.get(
-      'https://localhost:44337/WeatherForecast').subscribe(
-        (response) => {
-          console.log(response);
-        });
-  }
+    login() {
+        this.accountService.login(this.model).subscribe({
+            next: _ => {
+                this.router.navigateByUrl('/members');
+                this.model = {}
+            },
+            error: error => {
+                console.error(error);
+                this.toastr.error(error.error.title, 'Login failed');
+              }
+            });
+    }
 
-  onSubmit(form: NgForm) {
-    console.log(form);
-    // Handle the login logic here
-    console.log('Form submitted');
-  }
-
-  openSignUp() {
-    // Handle the sign up logic here
-    console.log('Sign up clicked');
-  }
-
+    openSignUp() {
+        this.router.navigate(['/register']);
+    }
 }
