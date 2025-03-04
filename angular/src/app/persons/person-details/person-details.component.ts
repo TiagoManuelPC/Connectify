@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from '../../_models/person';
-import { FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { PersonsService } from '../../_services/persons.service';
-import { DatePipe } from '@angular/common';
 import Swal from 'sweetalert2';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -30,14 +30,13 @@ export class PersonDetailsComponent {
     containerClass: 'theme-red',
     dateInputFormat: 'DD MMMM YYYY',
   }
-  formattedDate: any;;
-
-  // images: GalleryItem[] = [];
+  selectedFile: File | null = null;
+  previewUrl: string | ArrayBuffer | null = null;
+  formData: FormData | undefined;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private personsService: PersonsService,
-    private datePipe: DatePipe) { }
+    private personsService: PersonsService) { }
 
   ngOnInit(): void {
     const personId = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
@@ -46,9 +45,7 @@ export class PersonDetailsComponent {
         this.person = person;
         this.person.dateOfBirth = new Date(this.person.dateOfBirth);
         this.userName = this.person.firstName;
-        this.age = this.calculateAge(this.person.dateOfBirth);
-        this.formattedDate = this.formatDate(this.person.dateOfBirth);
-      });
+        this.age = this.calculateAge(this.person.dateOfBirth);      });
     }
   }
 
@@ -63,16 +60,41 @@ export class PersonDetailsComponent {
     return age;
   }
 
-  formatDate(date: Date): string {
-    return this.datePipe.transform(date, 'yyyy-MM-dd')!;
-  }
-
 
   getImages() {
     if (!this.person) return;
     // for (const photo of this.person?.photos) {
     //     // this.images.push(new ImageItem({ src: photo.url, thumb: photo.url }));
     // }
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+
+      // Preview the selected image
+      const reader = new FileReader();
+      reader.onload = () => this.previewUrl = reader.result;
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // Upload the file
+  uploadFile() {
+    if (!this.selectedFile) {
+      alert('Please select a file first.');
+      return;
+    }
+
+    this.formData = new FormData();
+    this.formData.append('file', this.selectedFile);
+
+    this.personsService.uploadImage(this.formData, this.person.id).subscribe(res => {
+      this.person.photo = environment.apiUrl + res;
+      this.formData = undefined;
+      this.previewUrl = null;
+    });
   }
 
   updatePerson(form: NgForm) {

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Person } from '../../_models/person';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-person-card',
@@ -11,7 +12,8 @@ import { Router } from '@angular/router';
 export class PersonCardComponent {
   @Input() person: Person | undefined;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+   }
 
   viewDetails(person: Person) {
     this.router.navigate(['/persons', person.id]);

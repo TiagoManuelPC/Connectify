@@ -58,4 +58,13 @@ export class PersonsService {
       })
     )
   }
+
+  uploadImage(formData: FormData, id: number) {
+    return this.http.post<{ fileUrl: string }>(`${this.baseUrl}Persons/${id}/upload-photo`, formData).pipe(
+      map((res: { fileUrl: string }) => {
+        return res.fileUrl;
+      })
+    );
+  }
+
 }

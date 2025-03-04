@@ -6,7 +6,8 @@
 
     <div class="col-4">
       <div class="card">
-        <img src="{{person.photo || '../../../../../assets/user.png'}}" alt="{{person.firstName}}" class="card-img-top img-thumbnail">
+        <img src="{{person.photo || '../../../../../assets/user.png'}}" alt="{{person.firstName}}"
+          class="card-img-top img-thumbnail">
         <div class="card-body">
           <div>
             <strong>Age:</strong>
@@ -20,7 +21,7 @@
         <div class="card-footer">
           <div class="d-flex justify-content-between">
             <button class="btn btn-danger" (click)="back()">Cancel</button>
-            <button  type="submit" form="editForm" class="btn btn-success">Save</button>
+            <button type="submit" form="editForm" class="btn btn-success">Save</button>
           </div>
         </div>
       </div>
@@ -45,13 +46,15 @@
             </div>
 
             <h6 class="mt-2">Gender</h6>
-            <ng-select [items]="genderList" bindLabel="name" name="gender" bindValue="name" placeholder="Select a gender" [(ngModel)]="person.gender" required></ng-select>
+            <ng-select [items]="genderList" bindLabel="name" name="gender" bindValue="name"
+              placeholder="Select a gender" [(ngModel)]="person.gender" required></ng-select>
             <div *ngIf="editForm.submitted && !editForm.controls['gender'].valid" class="text-danger">
               Gender is required
             </div>
 
             <h6 class="mt-2">Email Address</h6>
-            <input [(ngModel)]="person.emailAddress" type="email" name="emailAddress" class="form-control" email required>
+            <input [(ngModel)]="person.emailAddress" type="email" name="emailAddress" class="form-control" email
+              required>
             <div *ngIf="editForm.submitted && !editForm.controls['emailAddress'].valid" class="text-danger">
               Valid Email Address is required
             </div>
@@ -63,14 +66,24 @@
             </div>
 
             <h6 class="mt-2">Date of Birth</h6>
-            <input type="text" [bsConfig]="{ adaptivePosition: true }" class="form-control" bsDatepicker [(ngModel)]="person.dateOfBirth" name="dateOfBirth" placeholder="Date of Birth" required>
+            <input type="text" [bsConfig]="{ adaptivePosition: true }" class="form-control" bsDatepicker
+              [(ngModel)]="person.dateOfBirth" name="dateOfBirth" placeholder="Date of Birth" required>
             <div *ngIf="editForm.submitted && !editForm.controls['dateOfBirth'].valid" class="text-danger">
               Date of Birth is required
             </div>
           </form>
         </tab>
         <tab heading="Edit Photos">
-          <app-photo-editor [person]="person"></app-photo-editor>
+          <div class="form-group">
+            <label *ngIf="!previewUrl" for="fileInput" class="btn btn-primary mt-5">
+              <i class="fa fa-upload"></i> Choose File
+              <input type="file" id="fileInput" (change)="onFileSelected($event)" accept="image/*" hidden>
+            </label>
+            <button *ngIf="previewUrl" (click)="uploadFile()" class="btn btn-primary btn-block mt-5"><i class="fa fa-upload"></i> Upload</button>
+          </div>
+          <div *ngIf="previewUrl" class="text-center mt-3">
+            <img [src]="previewUrl" alt="Preview" class="img-thumbnail" width="200">
+          </div>
         </tab>
       </tabset>
     </div>

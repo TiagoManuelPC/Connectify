@@ -16,7 +16,6 @@ import { PersonDetailsComponent } from './persons/person-details/person-details.
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { PhotoEditorComponent } from './persons/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { DatePipe } from '@angular/common';
 import { AddPersonComponent } from './persons/add-person/add-person.component';
@@ -30,7 +29,6 @@ import { AddPersonComponent } from './persons/add-person/add-person.component';
     TextInputComponent,
     PersonCardComponent,
     PersonDetailsComponent,
-    PhotoEditorComponent,
     AddPersonComponent
   ],
   imports: [
