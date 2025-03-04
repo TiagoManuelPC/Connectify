@@ -70,5 +70,3 @@ Ensure you have the following dependencies installed before proceeding:
 
 Now you’re all set to run Connectify! 🚀
 
-give me the same but with the mark dow
-
