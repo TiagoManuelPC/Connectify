@@ -1,33 +1,32 @@
 <div class="h-100 d-flex align-items-center justify-content-center">
-    <div class="card custom-card text-white p-4">
-        <h1 class="text-center">Register</h1>
-        <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
-            <div class="mb-3">
-                <label for="userName" class="form-label">User Name</label>
-                <app-text-input [formControl]="$any(registerForm.controls['username'])"
-                    [label]="'Username'"></app-text-input>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'Password'"
-                    [type]="'password'"></app-text-input>
-            </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
-                <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])"
-                    [label]="'Confirm Password'" [type]="'password'"></app-text-input>
-            </div>
-            <div class="row" *ngIf="validationErrors">
-                <ul class="text-danger">
-                    <li *ngFor="let error of validationErrors">
-                        {{error}}
-                    </li>
-                </ul>
-            </div>
-            <button type="submit" [disabled]="!registerForm.valid" class="btn btn-custom w-100">Register</button>
-        </form>
-        <div class="text-center mt-3">
-            <a (click)="openLogin()" class="text-white" style="cursor: pointer;">Already have an account? Login</a>
-        </div>
+  <div class="card custom-card text-white p-4">
+    <h1 class="text-center">Register</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="registerForm.valid && register()" autocomplete="off">
+      <div class="mb-3">
+        <label for="userName" class="form-label">User Name</label>
+        <app-text-input [formControl]="$any(registerForm.controls['username'])" [label]="'Username'"></app-text-input>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'Password'"
+          [type]="'password'"></app-text-input>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+        <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [label]="'Confirm Password'"
+          [type]="'password'"></app-text-input>
+      </div>
+      <div class="row" *ngIf="validationErrors">
+        <ul class="text-danger">
+          <li *ngFor="let error of validationErrors">
+            {{error}}
+          </li>
+        </ul>
+      </div>
+      <button type="submit" [disabled]="!registerForm.valid" class="btn btn-custom w-100">Register</button>
+    </form>
+    <div class="text-center mt-3">
+      <a (click)="openLogin()" class="text-white" style="cursor: pointer;">Already have an account? Login</a>
     </div>
+  </div>
 </div>

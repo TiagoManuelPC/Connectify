@@ -1,27 +1,49 @@
 <div class="h-100 d-flex align-items-center justify-content-center">
-    <div class="card custom-card text-white p-4 w-25">
-        <h1 class="text-center">Add Person</h1>
-        <form #editForm="ngForm" id="editForm" (ngSubmit)="createPerson()">
-            <h6 class="mt-2">First Name</h6>
-            <input class="form-control" [(ngModel)]="person.firstName" name="firstName">
-            <h6 class="mt-2">Last Name</h6>
-            <input class="form-control" [(ngModel)]="person.lastName" name="lastName">
-            <h6 class="mt-2">Gender</h6>
-            <ng-select [items]="genderList" bindLabel="name" name="gender" bindValue="name"
-                placeholder="Select a gender" [(ngModel)]="person.gender"></ng-select>
-            <h6 class="mt-2">Email Address</h6>
-            <input [(ngModel)]="person.emailAddress" type="email" name="emailAddress" class="form-control" email>
-            <h6 class="mt-2">Phone Number</h6>
-            <input class="form-control" [(ngModel)]="person.phoneNumber" type="text" name="phoneNumber"
-                class="form-control">
-            <h6 class="mt-2">Date of Birth</h6>
-            <input type="text" [bsConfig]="{ adaptivePosition: true }" class="form-control" bsDatepicker
-                [(ngModel)]="person.dateOfBirth" name="dateOfBirth" placeholder="Date of Birth" required>
-            <div class="d-flex justify-content-between mt-3">
-                <button class="btn btn-danger" (click)="back()">Cancel</button>
-                <button type="submit" [disabled]="!editForm.valid" class="btn btn-custom">Register</button>
-            </div>
+  <div class="card custom-card text-white p-4 w-25">
+    <h1 class="text-center">Add Person</h1>
+    <form #editForm="ngForm" id="editForm" (ngSubmit)="createPerson()">
+      <h6 class="mt-2">First Name</h6>
+      <input class="form-control" [(ngModel)]="person.firstName" name="firstName" required>
+      <div *ngIf="editForm.submitted && !editForm.controls['firstName'].valid" class="text-danger">
+        First Name is required
+      </div>
 
-        </form>
-    </div>
+      <h6 class="mt-2">Last Name</h6>
+      <input class="form-control" [(ngModel)]="person.lastName" name="lastName" required>
+      <div *ngIf="editForm.submitted && !editForm.controls['lastName'].valid" class="text-danger">
+        Last Name is required
+      </div>
+
+      <h6 class="mt-2">Gender</h6>
+      <ng-select [items]="genderList" bindLabel="name" name="gender" bindValue="name" placeholder="Select a gender"
+        [(ngModel)]="person.gender" required></ng-select>
+      <div *ngIf="editForm.submitted && !editForm.controls['gender'].valid" class="text-danger">
+        Gender is required
+      </div>
+
+      <h6 class="mt-2">Email Address</h6>
+      <input [(ngModel)]="person.emailAddress" type="email" name="emailAddress" class="form-control" email required>
+      <div *ngIf="editForm.submitted && !editForm.controls['emailAddress'].valid" class="text-danger">
+        Valid Email Address is required
+      </div>
+
+      <h6 class="mt-2">Phone Number</h6>
+      <input class="form-control" [(ngModel)]="person.phoneNumber" type="text" name="phoneNumber" required>
+      <div *ngIf="editForm.submitted && !editForm.controls['phoneNumber'].valid" class="text-danger">
+        Phone Number is required
+      </div>
+
+      <h6 class="mt-2">Date of Birth</h6>
+      <input type="text" [bsConfig]="{ adaptivePosition: true }" class="form-control" bsDatepicker
+        [(ngModel)]="person.dateOfBirth" name="dateOfBirth" placeholder="Date of Birth" required>
+      <div *ngIf="editForm.submitted && !editForm.controls['dateOfBirth'].valid" class="text-danger">
+        Date of Birth is required
+      </div>
+
+      <div class="d-flex justify-content-between mt-3">
+        <button class="btn btn-danger" (click)="back()">Cancel</button>
+        <button type="submit" class="btn btn-custom">Register</button>
+      </div>
+    </form>
+  </div>
 </div>

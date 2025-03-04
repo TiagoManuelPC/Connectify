@@ -1,9 +1,9 @@
 <div class="card mb-4" *ngIf="person">
   <div class="card-img-wrapper">
       <img src="{{person.photo || './../../../../assets/user.png'}}" alt="{{person.firstName}}" class="card-img-top">
-      <ul class="list-inline member-icons animate text-center">
+      <ul class="list-inline person-icons animate text-center">
           <li class="list-inline-item">
-            <button (click)="viewDetails(person)" class="btn btn-primary"><i class="fa fa-user"></i>Details</button>
+            <button (click)="viewDetails(person)" class="btn btn-success"><i class="fa fa-user"></i> Details</button>
           </li>
       </ul>
   </div>

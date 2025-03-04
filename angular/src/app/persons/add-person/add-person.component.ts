@@ -22,7 +22,7 @@ export class AddPersonComponent {
 
   createPerson() {
     this.person.id = 0;
-    this.person.photo = this.person.photo ?? 'https://res.cloudinary.com/dkqohzjzg/image/upload/v1628581314/blank-profile-picture-973460_640_1_vzqz9c.png';
+    this.person.photo = 'https://randomuser.me/api/portraits/lego/7.jpg';
     this.personsService.createPerson(this.person).subscribe({
       next: response => {
         this.router.navigate(['/persons']);

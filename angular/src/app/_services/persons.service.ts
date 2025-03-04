@@ -6,52 +6,56 @@ import { environment } from '../../environments/environment';
 import { Person } from '../_models/person';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class PersonsService {
-    private http = inject(HttpClient);
-    private accountService = inject(AccountService);
+  private http = inject(HttpClient);
+  private accountService = inject(AccountService);
 
-    baseUrl = environment.apiUrl;
-    persons: Person[] = [];
-    memberCache = new Map();
-    user = this.accountService.currentUser();
+  baseUrl = environment.apiUrl;
+  persons: Person[] = [];
+  user = this.accountService.currentUser();
 
-    constructor() {
-    }
+  constructor() {
+  }
 
-    getMembers() {
-        return this.http.get<Person[]>(this.baseUrl + 'Persons/GetPersons').pipe(
-            map(response => {
-                return response;
-            })
-        )
-    }
+  getPersons() {
+    return this.http.get<Person[]>(this.baseUrl + 'Persons/GetPersons').pipe(
+      map(response => {
+        return response;
+      })
+    )
+  }
 
-    updatePerson(person: Person) {
+  getPerson(id: number) {
+    return this.http.get<Person>(`${this.baseUrl}Persons/GetPerson/${id}`).pipe(
+      map(response => {
+        return response;
+      })
+    )
+  }
 
-        return this.http.put<void>(`${this.baseUrl}Persons/UpdatePerson/${person.id}`, person).pipe(
-            map(() => {
-                const index = this.persons.indexOf(person);
-                this.persons[index] = { ...this.persons[index], ...person }
-            })
-        )
-    }
+  updatePerson(person: Person) {
+    return this.http.put<void>(`${this.baseUrl}Persons/UpdatePerson/${person.id}`, person).pipe(
+      map(() => {
+        const index = this.persons.indexOf(person);
+        this.persons[index] = { ...this.persons[index], ...person }
+      })
+    )
+  }
 
-    createPerson(person: Person) {
-      console.log(person);
-        return this.http.post<Person>(`${this.baseUrl}Persons/CreatePerson`, person).pipe(
-            map( () => {
-                // this.persons.push(newPerson);
-            })
-        )
-    }
+  createPerson(person: Person) {
+    return this.http.post<Person>(`${this.baseUrl}Persons/CreatePerson`, person).pipe(
+      map(() => {
+      })
+    )
+  }
 
-    setMainPhoto(photoId: number) {
-        return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
-    }
-
-    deletePhoto(photoId: number) {
-        return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
-    }
+  deletePerson(id: number) {
+    return this.http.delete<void>(`${this.baseUrl}Persons/DeletePerson/${id}`).pipe(
+      map(() => {
+        this.persons = this.persons.filter(x => x.id !== id);
+      })
+    )
+  }
 }

@@ -14,7 +14,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PersonCardComponent } from './persons/person-card/person-card.component';
 import { PersonDetailsComponent } from './persons/person-details/person-details.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { PhotoEditorComponent } from './persons/photo-editor/photo-editor.component';
@@ -23,34 +22,33 @@ import { DatePipe } from '@angular/common';
 import { AddPersonComponent } from './persons/add-person/add-person.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LoginComponent,
-        RegisterComponent,
-        PersonsComponent,
-        TextInputComponent,
-        PersonCardComponent,
-        PersonDetailsComponent,
-        DatePickerComponent,
-        PhotoEditorComponent,
-        AddPersonComponent
-    ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TabsModule,
-        NgSelectModule,
-        FileUploadModule,
-        BsDatepickerModule.forRoot(),
-        ToastrModule.forRoot({
-            positionClass: 'toast-bottom-right',
-            preventDuplicates: true
-        }),
-    ],
-    providers: [provideHttpClient(), DatePipe],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    PersonsComponent,
+    TextInputComponent,
+    PersonCardComponent,
+    PersonDetailsComponent,
+    PhotoEditorComponent,
+    AddPersonComponent
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TabsModule,
+    NgSelectModule,
+    FileUploadModule,
+    BsDatepickerModule.forRoot(),
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    }),
+  ],
+  providers: [provideHttpClient(), DatePipe],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,7 +10,7 @@ describe('PhotoEditorComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [PhotoEditorComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(PhotoEditorComponent);
     component = fixture.componentInstance;

@@ -90,6 +90,29 @@ namespace Connectify.Controllers
             return NoContent();
         }
 
+        [HttpGet("GetPerson/{id}")]
+        public async Task<ActionResult<PersonDto>> GetPerson(int id)
+        {
+            var person = await _context.Persons.AsNoTracking()
+                .Select(p => new PersonDto
+                {
+                    Id = p.Id,
+                    FirstName = p.FirstName,
+                    LastName = p.LastName,
+                    EmailAddress = p.EmailAddress,
+                    PhoneNumber = p.PhoneNumber,
+                    DateOfBirth = p.DateOfBirth,
+                    Gender = p.Gender,
+                    Photo = p.Photo,
+                    Created = p.Created
+                })
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (person == null) return NotFound("Could not find person");
+
+            return Ok(person);
+        }
+
         [HttpDelete("DeletePerson/{id}")]
         public async Task<ActionResult> DeletePerson(int id)
         {
