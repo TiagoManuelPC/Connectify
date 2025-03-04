@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from '../../_models/person';
 import { FormGroup, NgForm } from '@angular/forms';
@@ -13,7 +13,7 @@ import { environment } from '../../../environments/environment';
   templateUrl: './person-details.component.html',
   styleUrl: './person-details.component.scss'
 })
-export class PersonDetailsComponent {
+export class PersonDetailsComponent implements OnInit {
   @ViewChild('editForm') editForm!: NgForm;
   person: Person = {} as Person;
   genderList = [
@@ -60,14 +60,6 @@ export class PersonDetailsComponent {
     return age;
   }
 
-
-  getImages() {
-    if (!this.person) return;
-    // for (const photo of this.person?.photos) {
-    //     // this.images.push(new ImageItem({ src: photo.url, thumb: photo.url }));
-    // }
-  }
-
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -86,7 +78,6 @@ export class PersonDetailsComponent {
       alert('Please select a file first.');
       return;
     }
-
     this.formData = new FormData();
     this.formData.append('file', this.selectedFile);
 
@@ -94,6 +85,7 @@ export class PersonDetailsComponent {
       this.person.photo = environment.apiUrl + res;
       this.formData = undefined;
       this.previewUrl = null;
+      window.location.reload();
     });
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Person } from '../../_models/person';
 import { Router } from '@angular/router';
 import { PersonsService } from '../../_services/persons.service';
@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
   templateUrl: './add-person.component.html',
   styleUrl: './add-person.component.scss'
 })
-export class AddPersonComponent {
+export class AddPersonComponent implements OnInit {
   person: Person = {} as Person;
   genderList = [
     {
@@ -24,6 +24,9 @@ export class AddPersonComponent {
   ];
 
   constructor(private router: Router, private personsService: PersonsService) { }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   createPerson() {
     this.person.id = 0;
