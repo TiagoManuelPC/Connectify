@@ -1,15 +1,8 @@
-﻿using AutoMapper;
-using AutoMapper.QueryableExtensions;
-using Connectify.Data;
+﻿using Connectify.Data;
 using Connectify.DTOs;
 using Connectify.Entities;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Mail;
-using System.Reflection;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Connectify.Controllers
 {
