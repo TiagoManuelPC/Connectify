@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fic7hdZA12k=",
+  "dgSpecHash": "umHvvZNox9E=",
   "success": true,
   "projectFilePath": "C:\\Users\\Tagui\\Desktop\\projects\\Connectify\\backend\\backend.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Tagui\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\Tagui\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Tagui\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
     "C:\\Users\\Tagui\\.nuget\\packages\\microsoft.bcl.memory\\9.0.0\\microsoft.bcl.memory.9.0.0.nupkg.sha512",

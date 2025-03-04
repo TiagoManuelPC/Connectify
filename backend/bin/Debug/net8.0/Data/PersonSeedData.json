@@ -1,0 +1,47 @@
+[
+    {
+        "FirstName": "Lisa",
+        "LastName": "Henderson",
+        "Gender": "female",
+        "DateOfBirth": "1956-07-22",
+        "Created": "2019-12-09",
+        "EmailAdress": "someone@hotmail.com",
+        "PhoneNumber": "123456789"
+    },
+    {
+        "FirstName": "John",
+        "LastName": "Henderson",
+        "Gender": "male",
+        "DateOfBirth": "1990-06-15",
+        "Created": "2019-12-09",
+        "EmailAdress": "someoneJohn@hotmail.com",
+        "PhoneNumber": "123456789"
+    },
+    {
+        "FirstName": "Lewis",
+        "LastName": "Hamilton",
+        "Gender": "male",
+        "DateOfBirth": "1980-01-11",
+        "Created": "2019-12-09",
+        "EmailAdress": "lHamilton@hotmail.com",
+        "PhoneNumber": "123456789"
+    },
+    {
+        "FirstName": "Celestine",
+        "LastName": "Manist",
+        "Gender": "female",
+        "DateOfBirth": "1996-12-22",
+        "Created": "2019-12-09",
+        "EmailAdress": "celestine@hotmail.com",
+        "PhoneNumber": "123456789"
+    },
+    {
+        "FirstName": "Mona",
+        "LastName": "Lisa",
+        "Gender": "female",
+        "DateOfBirth": "1975-02-22",
+        "Created": "2019-12-09",
+        "EmailAdress": "smona@hotmail.com",
+        "PhoneNumber": "123456789"
+    }
+]

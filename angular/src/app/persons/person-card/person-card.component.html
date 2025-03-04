@@ -1,0 +1,16 @@
+<div class="card mb-4" *ngIf="person">
+  <div class="card-img-wrapper">
+      <img src="{{person.photo || './../../../../assets/user.png'}}" alt="{{person.firstName}}" class="card-img-top">
+      <ul class="list-inline member-icons animate text-center">
+          <li class="list-inline-item">
+            <button (click)="viewDetails(person)" class="btn btn-primary"><i class="fa fa-user"></i>Details</button>
+          </li>
+      </ul>
+  </div>
+  <div class="card-body p-1">
+      <h6 class="card-title text-center mb-1">
+          {{person.firstName}} {{person.lastName}}
+      </h6>
+      <p class="card-text text-muted text-center">{{person.gender}}</p>
+  </div>
+</div>

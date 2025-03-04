@@ -50,7 +50,7 @@ export class RegisterComponent {
         const values = { ...this.registerForm.value }
         this.accountService.register(values).subscribe({
             next: response => {
-                this.router.navigateByUrl('/members');
+                this.router.navigateByUrl('/persons');
             },
             error: error => {
                 this.validationErrors = error;

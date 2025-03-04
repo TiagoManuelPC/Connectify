@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { AccountService } from '../_services/account.service';
@@ -27,7 +26,7 @@ export class LoginComponent {
     login() {
         this.accountService.login(this.model).subscribe({
             next: _ => {
-                this.router.navigateByUrl('/members');
+                this.router.navigateByUrl('/persons');
                 this.model = {}
             },
             error: error => {

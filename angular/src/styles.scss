@@ -1,4 +1,5 @@
-@import 'ngx-toastr/toastr';
+@use 'ngx-toastr/toastr';
+@import "@ng-select/ng-select/themes/default.theme.css";
 .background {
   background: linear-gradient(135deg, #00ffaa 0%, #00090e 100%);
 }

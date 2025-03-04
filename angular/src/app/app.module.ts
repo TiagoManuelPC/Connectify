@@ -7,18 +7,31 @@ import { LoginComponent } from './login/login.component';
 import { provideHttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-import { MembersComponent } from './members/members.component';
+import { PersonsComponent } from './persons/persons.component';
 import { TextInputComponent } from './_forms/text-input/text-input.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PersonCardComponent } from './persons/person-card/person-card.component';
+import { PersonDetailsComponent } from './persons/person-details/person-details.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { DatePickerComponent } from './_forms/date-picker/date-picker.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { PhotoEditorComponent } from './persons/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
         RegisterComponent,
-        MembersComponent,
-        TextInputComponent
+        PersonsComponent,
+        TextInputComponent,
+        PersonCardComponent,
+        PersonDetailsComponent,
+        DatePickerComponent,
+        PhotoEditorComponent
     ],
     imports: [
         BrowserModule,
@@ -26,12 +39,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         AppRoutingModule,
         FormsModule,
         ReactiveFormsModule,
+        TabsModule,
+        NgSelectModule,
+        FileUploadModule,
+        BsDatepickerModule.forRoot(),
         ToastrModule.forRoot({
             positionClass: 'toast-bottom-right',
             preventDuplicates: true
         }),
     ],
-    providers: [provideHttpClient()],
+    providers: [provideHttpClient(), DatePipe],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

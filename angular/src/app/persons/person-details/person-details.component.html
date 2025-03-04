@@ -1,0 +1,75 @@
+<div class="h-100 d-flex align-items-center justify-content-center">
+  <div class="row p-5 h-75" style="background-color: rgba(0, 0, 0, 0.137);" *ngIf="person">
+    <div class="col-4">
+        <h1 class="text-white">Your profile</h1>
+    </div>
+    <div class="col-8">
+    </div>
+    <div class="col-4">
+        <div class="card">
+          <img src="{{person.photo || '../../../../../assets/user.png'}}" alt="{{person.firstName}}"
+                class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div>
+                    <strong>Age:</strong>
+                    <p>{{age}}</p>
+                </div>
+                <!-- <div>
+                    <strong>Last active:</strong>
+                    <p>{{person.lastActive | timeago}}</p>
+                </div> -->
+                <div>
+                    <strong>Member since:</strong>
+                    <p>{{person.created | date:'dd MMM yyyy'}}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex justify-content-between">
+                <button class="btn btn-danger" (click)="back()">Cancel</button>
+                <button
+                    [disabled]="!editForm.dirty"
+                    type="submit"
+                    form="editForm"
+                    class="btn btn-success">Save Changes</button>
+              </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-8">
+        <tabset class="member-tabset text-white">
+            <tab heading="About {{userName}}">
+                <form #editForm="ngForm" id="editForm" (ngSubmit)="updatePerson()">
+                    <h6 class="mt-2">First Name</h6>
+                    <input class="form-control" [(ngModel)]="person.firstName" name="firstName">
+                    <h6 class="mt-2">Last Name</h6>
+                    <input class="form-control" [(ngModel)]="person.lastName" name="lastName">
+                    <h6 class="mt-2">Gender</h6>
+                    <ng-select [items]="genderList" bindLabel="name" name="gender" bindValue="name" placeholder="Select a gender" [(ngModel)]="person.gender"></ng-select>
+                    <h6 class="mt-2">Email Address</h6>
+                    <input [(ngModel)]="person.emailAddress" type="email" name="emailAddress" class="form-control" email>
+                    <h6 class="mt-2">Phone Number</h6>
+                    <input class="form-control" [(ngModel)]="person.phoneNumber" type="text" name="phoneNumber" class="form-control">
+                    <h6 class="mt-2">Date of Birth</h6>
+                    <input class="form-control" [(ngModel)]="person.dateOfBirth" type="text" name="dateOfBirth" class="form-control">
+                    <input
+                          type="text"
+                          [bsConfig]="{ adaptivePosition: true }"
+                          class="form-control"
+                          bsDatepicker
+                          [(ngModel)]="formattedDate"
+                          name="dateOfBirth"
+                          placeholder="Date of Birth"
+                          required
+  >
+                </form>
+            </tab>
+            <tab heading="Edit Photos">
+                <app-photo-editor [person]="person"></app-photo-editor>
+            </tab>
+        </tabset>
+    </div>
+  </div>
+</div>
+

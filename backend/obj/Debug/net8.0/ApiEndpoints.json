@@ -53,15 +53,21 @@
   },
   {
     "ContainingType": "Connectify.Controllers.PersonsController",
-    "Method": "Testing",
-    "RelativePath": "api/Persons/test",
-    "HttpMethod": "GET",
+    "Method": "CreatePerson",
+    "RelativePath": "api/Persons/CreatePerson",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "personDto",
+        "Type": "Connectify.DTOs.PersonDto",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.String",
+        "Type": "Connectify.DTOs.PersonDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -70,5 +76,46 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "Connectify.Controllers.PersonsController",
+    "Method": "GetPersons",
+    "RelativePath": "api/Persons/GetPersons",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[Connectify.DTOs.PersonDto, backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Connectify.Controllers.PersonsController",
+    "Method": "UpdatePerson",
+    "RelativePath": "api/Persons/UpdatePerson/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "model",
+        "Type": "Connectify.DTOs.PersonDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
