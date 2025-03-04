@@ -6,11 +6,17 @@ Connectify is a web application that consists of an Angular frontend and an ASP.
 
 Before you begin, ensure you have the following installed on your machine:
 
+- [Angular CLI](https://angular.io/cli) (version 19)
+- [.NET SDK](https://dotnet.microsoft.com/download) (version 8)
 
 ## Getting Started
 
-### Clone the Repository
+Instal angular dependencies
 
-Clone the repository to your local machine:
+```
+yarn
+```
 
-
+```
+npm start
+```
