@@ -52,13 +52,12 @@
                     <h6 class="mt-2">Phone Number</h6>
                     <input class="form-control" [(ngModel)]="person.phoneNumber" type="text" name="phoneNumber" class="form-control">
                     <h6 class="mt-2">Date of Birth</h6>
-                    <input class="form-control" [(ngModel)]="person.dateOfBirth" type="text" name="dateOfBirth" class="form-control">
                     <input
                           type="text"
                           [bsConfig]="{ adaptivePosition: true }"
                           class="form-control"
                           bsDatepicker
-                          [(ngModel)]="formattedDate"
+                          [(ngModel)]="person.dateOfBirth"
                           name="dateOfBirth"
                           placeholder="Date of Birth"
                           required

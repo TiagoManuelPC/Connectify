@@ -1,6 +1,5 @@
 <div class="mb-3">
   <input
-      type="text"
       [class.is-invalid]="control.touched && control.invalid"
       class="form-control"
       [formControl]="control"
@@ -8,6 +7,7 @@
       bsDatepicker
       [bsConfig]="bsConfig"
       [maxDate]="maxDate"
+      [bsConfig]="{ adaptivePosition: true }"
   >
   <div *ngIf="control.errors?.['required']" class="invalid-feedback">{{label}} is required</div>
 </div>

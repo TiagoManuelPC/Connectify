@@ -18,4 +18,8 @@ export class AppComponent {
         this.accountService.logout();
         this.router.navigateByUrl('/')
     }
+
+    addPerson() {
+      this.router.navigate(['/add-person'])
+    }
 }

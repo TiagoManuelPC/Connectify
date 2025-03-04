@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Person } from '../../_models/person';
-import { NgForm } from '@angular/forms';
+import { FormGroup, NgForm, Validators } from '@angular/forms';
 import { PersonsService } from '../../_services/persons.service';
 import { DatePipe } from '@angular/common';
 
@@ -20,13 +20,16 @@ export class PersonDetailsComponent {
         { id: 2, name: 'Male' }
     ];
 
+    form: FormGroup = new FormGroup({});
+    validationErrors: string[] | undefined;
+
     userName: string = '';
     age: number | undefined;
     bsConfig = {
         containerClass: 'theme-red',
         dateInputFormat: 'DD MMMM YYYY',
-      }
-      formattedDate: any;;
+    }
+    formattedDate: any;;
 
     // images: GalleryItem[] = [];
 
@@ -46,6 +49,7 @@ export class PersonDetailsComponent {
         });
     }
 
+
     calculateAge(birthday: Date): number {
         const birthDate = new Date(birthday);
         const today = new Date();
@@ -59,7 +63,7 @@ export class PersonDetailsComponent {
 
     formatDate(date: Date): string {
         return this.datePipe.transform(date, 'yyyy-MM-dd')!;
-      }
+    }
 
 
     getImages() {
@@ -73,8 +77,14 @@ export class PersonDetailsComponent {
         this.personsService.updatePerson(this.person).subscribe({
             next: _ => {
                 this.editForm.reset(this.person);
+                this.router.navigate(['/persons']);
             }
         });
+    }
+
+    onDateChange($event: Date) {
+        this.person.dateOfBirth = $event;
+        this.age = this.calculateAge(this.person.dateOfBirth);
     }
 
     back() {

@@ -14,7 +14,6 @@ import { AccountService } from '../_services/account.service';
 export class RegisterComponent {
     baseUrl = environment.apiUrl;
     registerForm: FormGroup = new FormGroup({});
-    maxDate: Date = new Date();
     validationErrors: string[] | undefined;
     constructor(private accountService: AccountService,
         private fb: FormBuilder,

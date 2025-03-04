@@ -3,6 +3,7 @@ using AutoMapper.QueryableExtensions;
 using Connectify.Data;
 using Connectify.DTOs;
 using Connectify.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Net.Mail;
@@ -58,7 +59,7 @@ namespace Connectify.Controllers
                 Gender = personDto.Gender,
                 DateOfBirth = personDto.DateOfBirth,
                 PhoneNumber = personDto.PhoneNumber,
-                Photo = personDto.Photo
+                Photo = personDto.Photo ?? ""
             };
 
             _context.Persons.Add(person);
@@ -84,6 +85,19 @@ namespace Connectify.Controllers
             person.Photo = model.Photo;
 
             _context.Persons.Update(person);
+            await _context.SaveChangesAsync(); // Save changes to the database
+
+            return NoContent();
+        }
+
+        [HttpDelete("DeletePerson/{id}")]
+        public async Task<ActionResult> DeletePerson(int id)
+        {
+            var person = await _context.Persons.FirstOrDefaultAsync(x => x.Id == id);
+
+            if (person == null) return NotFound("Could not find person");
+
+            _context.Persons.Remove(person);
             await _context.SaveChangesAsync(); // Save changes to the database
 
             return NoContent();

@@ -29,10 +29,20 @@ export class PersonsService {
     }
 
     updatePerson(person: Person) {
+
         return this.http.put<void>(`${this.baseUrl}Persons/UpdatePerson/${person.id}`, person).pipe(
             map(() => {
                 const index = this.persons.indexOf(person);
                 this.persons[index] = { ...this.persons[index], ...person }
+            })
+        )
+    }
+
+    createPerson(person: Person) {
+      console.log(person);
+        return this.http.post<Person>(`${this.baseUrl}Persons/CreatePerson`, person).pipe(
+            map( () => {
+                // this.persons.push(newPerson);
             })
         )
     }

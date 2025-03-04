@@ -1,0 +1,16 @@
+
+.custom-card {
+  background-color: rgba(0, 0, 0, 0.1); /* White background with 80% opacity */
+  border-radius: 0.25rem; /* Optional: Add border radius for rounded corners */
+}
+
+.btn-custom {
+  background-color: #14cc98; /* Green background */
+  color: white; /* White text color */
+  // border: 1px solid #00ffaa; /* Green border */
+}
+
+.btn-custom:hover {
+  background-color: #00ac72; /* Darker green background on hover */
+   /* Darker black text color on hover */
+}

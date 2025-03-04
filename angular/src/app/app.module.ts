@@ -20,6 +20,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { PhotoEditorComponent } from './persons/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { DatePipe } from '@angular/common';
+import { AddPersonComponent } from './persons/add-person/add-person.component';
 
 @NgModule({
     declarations: [
@@ -31,7 +32,8 @@ import { DatePipe } from '@angular/common';
         PersonCardComponent,
         PersonDetailsComponent,
         DatePickerComponent,
-        PhotoEditorComponent
+        PhotoEditorComponent,
+        AddPersonComponent
     ],
     imports: [
         BrowserModule,
